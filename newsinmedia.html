@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<!-- Scroller Head CONTENT-->
+<!--STARTS HERE-->
+<style type="text/css">
+
+#marqueecontainer{
+	position:relative;
+	width: 170px; /*marquee width */
+	height: 310px; /*marquee height */
+	background-color: #EADCAE;
+	overflow: hidden;
+	border: 2px #EADCAE;
+	padding: 0px;
+	padding-left: 0px;
+	visibility: visible;
+		
+}
+
+</style>
+
+<script type="text/javascript">
+
+var delayb4scroll=2000 //Specify initial delay before marquee starts to scroll on page (2000=2 seconds)
+var marqueespeed=2 //Specify marquee scroll speed (larger is faster 1-10)
+var pauseit=1 //Pause marquee onMousever (0=no. 1=yes)?
+
+////NO NEED TO EDIT BELOW THIS LINE////////////
+
+var copyspeed=marqueespeed
+var pausespeed=(pauseit==0)? copyspeed: 0
+var actualheight=''
+
+function scrollmarquee(){
+if (parseInt(cross_marquee.style.top)>(actualheight*(-1)+8))
+cross_marquee.style.top=parseInt(cross_marquee.style.top)-copyspeed+"px"
+else
+cross_marquee.style.top=parseInt(marqueeheight)+8+"px"
+}
+
+function initializemarquee(){
+cross_marquee=document.getElementById("vmarquee")
+cross_marquee.style.top=0
+marqueeheight=document.getElementById("marqueecontainer").offsetHeight
+actualheight=cross_marquee.offsetHeight
+if (window.opera || navigator.userAgent.indexOf("Netscape/7")!=-1){ //if Opera or Netscape 7x, add scrollbars to scroll and exit
+cross_marquee.style.height=marqueeheight+"px"
+cross_marquee.style.overflow="scroll"
+return
+}
+setTimeout('lefttime=setInterval("scrollmarquee()",30)', delayb4scroll)
+}
+
+if (window.addEventListener)
+window.addEventListener("load", initializemarquee, false)
+else if (window.attachEvent)
+window.attachEvent("onload", initializemarquee)
+else if (document.getElementById)
+window.onload=initializemarquee
+
+
+</script>
+
+<!--ENDS HERE-->
+<!-- Scroller Head CONTENT-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Toprak Lab in Media</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	padding-right: 5px;
+	padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~this fixed width container surrounds the other divs~~ */
+.container {
+	width: 960px;
+	background-color: #FFF;
+	margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout */
+	text-align: left;
+}
+
+/* ~~ the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo ~~ */
+.header {
+	background-color: #ADB96E;
+}
+
+/* ~~ These are the columns for the layout. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the divs. The elements within these divs have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+2) No margin has been given to the columns since they are all floated. If you must add margin, avoid placing it on the side you're floating toward (for example: a right margin on a div set to float right). Many times, padding can be used instead. For divs where this rule must be broken, you should add a "display:inline" declaration to the div's rule to tame a bug where some versions of Internet Explorer double the margin.
+
+3) Since classes can be used multiple times in a document (and an element can also have multiple classes applied), the columns have been assigned class names instead of IDs. For example, two sidebar divs could be stacked if necessary. These can very easily be changed to IDs if that's your preference, as long as you'll only be using them once per document.
+
+4) If you prefer your nav on the right instead of the left, simply float these columns the opposite direction (all right instead of all left) and they'll render in reverse order. There's no need to move the divs around in the HTML source.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 180px;
+	background-color: #EADCAE;
+	padding-bottom: 10px;
+	text-align: center;
+}
+.content {
+
+	padding: 10px 0;
+	width: 780px;
+	float: left;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The navigation list styles (can be removed if you choose to use a premade flyout menu like Spry) ~~ */
+ul.nav {
+	list-style: none; /* this removes the list marker */
+	border-top: 1px solid #666;
+	padding: 5px;
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* this creates the button separation */
+}
+ul.nav a, ul.nav a:visited { /* grouping these selectors makes sure that your links retain their button look even after being visited */
+	display: block; /* this gives the link block properties causing it to fill the whole LI containing it. This causes the entire area to react to a mouse click. */
+	width: auto;  /*this width makes the entire button clickable for IE6. If you don't need to support IE6, it can be removed. Calculate the proper width by subtracting the padding on this link from the width of your sidebar container. */
+	text-decoration: none;
+	background-color: #C6D580;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	margin: auto;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+	background-color: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ The footer ~~ */
+.footer {
+	background-color: #CCC49F;
+	position: relative;/* this gives IE6 hasLayout to properly clear */
+	clear: both; /* this clear property forces the .container to understand where the columns end and contain them */
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	line-height: normal;
+	word-spacing: normal;
+	vertical-align: middle;
+	left: auto;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	padding: 1px;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.container .footer p {
+	font-size: 100pt;
+}
+.container .footer p {
+	font-size: 10pt;
+}
+.container .footer p {
+	text-align: center;
+	vertical-align: baseline;
+	display: compact;
+	line-height: 5px;
+}
+-->
+</style></head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+  <center>
+  <a href="index.html"><img src="images/header3.jpg" alt="Insert Logo Here" name="Insert_logo" width="960" height="130" id="Insert_logo" style="background-color: #C6D580; display:block;" /></a> 
+  </center>
+    <!-- end .header --></div>
+  <div class="sidebar1">
+  <center>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="technologies.html">Technologies</a></li>
+      <li><a href="grants.html">Funding</a></li>
+      <li><a href="newsinmedia.html">News in the Media</a></li>
+      <li><a href="openpositions.html">Join Us</a></li>
+     <!-- <li><a href="highschools.html">For High School Students</a></li>
+      -->
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="http://www.utsouthwestern.edu"><img src="images/utsw_logo.png" name="UTSW Logo" width="163" height="43"/></a></li>
+    </ul>
+    
+    <b><font size="+2">News </font></b>
+    </center>
+    
+      <div id="marqueecontainer" onMouseover="copyspeed=pausespeed" onMouseout="copyspeed=marqueespeed">
+      
+<div id="vmarquee" style="position: absolute; padding-left: 5px; width: 160px; left: 9px; top: 6px;">
+<!--YOUR SCROLL CONTENT HERE-->
+
+Toprak Lab has moved to Green Center for Systems  Biology at UT Southwestern Medical Center
+<br><br><br><br>
+<a href=openpositions.html><font color="#0000FF">Postdoc positions available </font></a>
+
+<!--YOUR SCROLL CONTENT HERE-->
+
+</div>
+</div>
+</div>
+  <!-- End of Sidebar --> 
+  <div class="content">
+  <table>
+  <tr>
+  <td width="30">
+  </td>
+  <td width="738">
+    <br>
+    <ul>
+    <li>BBC episode covering our Morbidostat work <a href=http://www.bbc.co.uk/programmes/b01ms5c6>(Link)</a></li>
+	<li>Interview with Illumina iCommunity Newsletter<a href=http://www.illumina.com/documents/icommunity/article_2012_07_Morbidostat.pdf> (Link)</a></li>
+    <li>Nature Genetics News and Views <a href=http://elowitz.caltech.edu/publications/Evolution%20in%20Real%20Time.pdf>(Link)</a></li>
+    <li>Genome Biology <a href=http://genomebiology.com/2012/13/1/140>(Link)</a></li>
+    <li>Science <a href=http://www.sciencemag.org/content/333/6049/1562.2.full.pdf>(Link)</a></li>
+    <li>Faculty 1000 <a href=http://f1000.com/13445979>(Link)</a></li>
+    <li>Nature Press Release <a href=http://www.natureasia.com/en/highlights/details.php?id=1583>(Link)</a></li>
+    <li>Nature Medicine <a href=http://blogs.nature.com/spoonful/2011/12/welcome-to-the-morbidostat-researchers-watch-deadly-drug-resistance-in-action.html>(Link)</a></li>
+    <li>The Scientist <a href="http://the-scientist.com/2011/12/18/the-evolution-of-drug-resistance/">(Link)</a></li>
+    <li>PhysOrg <a href=http://www.physorg.com/news/2011-12-whole-genome-sequencing-evolution-drug-resistance.html>(Link)</a></li>
+    <li>New Scientist <a href=http://www.newscientist.com/article/mg21228443.300-stealth-tactics-of-bacteria-revealed.html>(Link)</a></li>
+    <li>Scientific American <a href=http://blogs.scientificamerican.com/lab-rat/2012/01/10/discrete-steps-to-antibiotic-resistance/?print=true>(Link)</a></li>
+    <li>Photonics <a href=http://www.photonics.com/Article.aspx?AID=30400>(Link)</a></li>
+    <li>Photometrics <a href=http://www.photometrics.com/resources/technotes/pdfs/3Dparticle-tracking.pdf>(Link)</a></li>
+    <li>Biophotonics International <a href=http://people.physics.illinois.edu/Selvin/PRS/Biophotonics_Erdal.pdf>(Link)</a></li>
+    </ul>
+    </td>
+    </tr>
+    </table>
+    <!-- end .content --></div>
+  <div class="footer">
+  <center>This website reflects only the views of the author and is not a publication of UT Southwestern, which bears no responsibility for its content.</center>
+    <!-- end .footer --></div>
+  <!-- end .container --></div>
+</body>
+</html>
